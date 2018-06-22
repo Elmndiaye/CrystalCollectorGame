@@ -10,27 +10,27 @@ $(document).ready(function() {
     // Setting up our starting variables.
     var wins = 0;
     var losses = 0;
-    var crystals;
+    var boules;
   
     // Function that generates random values for our crystals and returns our crystals object.
-    function randomNumCrystals() {
+    function randomNumBoules() {
       // Crystals object.
       return {
         red: {
           points: Math.floor(Math.random() * 5) + 1,
-          imageUrl: "assets/images/red.png"
+          imageUrl: "assets/images/imagered.jpeg"
         },
         blue: {
           points: Math.floor(Math.random() * 5) + 1,
-          imageUrl: "assets/images/blue.png"
+          imageUrl: "assets/images/imageblue.jpeg"
         },
         yellow: {
           points: Math.floor(Math.random() * 5) + 1,
-          imageUrl: "assets/images/yellow.png"
+          imageUrl: "assets/images/imageyellow.jpeg"
         },
         green: {
           points: Math.floor(Math.random() * 5) + 1,
-          imageUrl: "assets/images/green.png"
+          imageUrl: "assets/images/imagegreen.jpg"
         }
       };
     }
@@ -45,7 +45,7 @@ $(document).ready(function() {
       // Make our current total number 0.
       yourMatchingNumber = 0;
       // Generate random crystal values.
-      crystals = randomNumCrystals();
+      crystals = randomNumBoules();
       // Generate a random target number and render it to the page.
       randomNum = randomNumGen();
       $("#random-area").text(randomNum);
@@ -85,19 +85,19 @@ $(document).ready(function() {
     }
   
     // Function to render our crystals to the page.
-    function renderCrystals() {
+    function renderBoules() {
       for (var key in crystals) {
-        var crystalDiv = $("<div class='crystals-button' data-name='" + key + "'>");
-        var crystalImg = $("<img alt='image' class='crystal-img'>").attr("src", crystals[key].imageUrl);
-        crystalDiv.append(crystalImg);
-        $("#crystal-area").append(crystalDiv);
+        var boulesDiv = $("<div class='boules-button' data-name='" + key + "'>");
+        var boulesImg = $("<img alt='image' class='boules-img'>").attr("src", boules[key].imageUrl);
+        boulesDiv.append(boulesImg);
+        $("#boules-area").append(boulesDiv);
       }
     }
   
     // Function to update our "current guess" number. We are passing in the crystal that was clicked as an argument.
-    function updateMatchingNumber(crystal) {
+    function updateMatchingNumber(boules) {
       // Update our "current guess" number based on which crystal was clicked.
-      yourMatchingNumber += crystals[crystal.attr("data-name")].points;
+      yourMatchingNumber += boules[boules.attr("data-name")].points;
     }
   
     // Function that will render your "current guess" number to the page.
@@ -110,11 +110,11 @@ $(document).ready(function() {
     // Call our functions to start the game!
     setGame();
     updateDom();
-    renderCrystals();
+    renderBoules();
     renderMatchingNumber();
   
     // Here we create an on.click event for the crystals.
-    $(".crystals-button").on("click", function(event) {
+    $(".boules-button").on("click", function(event) {
       // Update our "current guess" number and re-render it.
       updateMatchingNumber($(this));
       renderMatchingNumber();

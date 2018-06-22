@@ -57,11 +57,11 @@ body {
     background-color: darkcyan;
   }
   
-  .crystals-button {
+  .boules-button {
     display: inline;
   }
   
-  .crystal-img {
+  .boules-img {
     width: 80px;
     height: 80px;
     cursor: pointer;
