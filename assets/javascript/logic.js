@@ -95,9 +95,9 @@ $(document).ready(function() {
     }
   
     // Function to update our "current guess" number. We are passing in the crystal that was clicked as an argument.
-    function updateMatchingNumber(boules) {
+    function updateMatchingNumber(boule) {
       // Update our "current guess" number based on which crystal was clicked.
-      yourMatchingNumber += boules[boules.attr("data-name")].points;
+      yourMatchingNumber += boules[boule.attr("data-name")].points;
     }
   
     // Function that will render your "current guess" number to the page.
@@ -106,7 +106,8 @@ $(document).ready(function() {
       $("#score-area").html();
       $("#score-area").html(scoreNumDiv);
     }
-  
+  boules =randomNumBoules();
+
     // Call our functions to start the game!
     setGame();
     updateDom();
